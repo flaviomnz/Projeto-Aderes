@@ -59,17 +59,17 @@
       <tr>
         <th>ID</th>
         <th>Nome</th>
-        <th>Idade</th>
+        <th>Email</th>
       </tr>
-      { % for usuarios in usuarios % }
+      {% for usuario in usuarios %}
     </thead>
     <tbody>
       <tr>
         <td>{{usuarios.id}}</td>
-        <td>{{usuarios.name}}</td>
+        <td>{{usuarios.nome}}</td>
         <td>{{usuarios.email}}</td>
       </tr>
-      { % endfor % }
+      {% endfor %}
     </tbody>
   </table>
 
