@@ -9,16 +9,16 @@ def home(request):
 def usuarios(request):
     #Salvando os dados da tela p/ o banco de dados
     novo_usuario = Usuario()
-    novo_usuario_name = request.POST.get('name')
-    novo_usuario_email = request.POST.get('email')
+
+    novo_usuario.name = request.POST.get('name')
+    novo_usuario.email = request.POST.get('email')
     novo_usuario.save()
 
 
-    #Exibindo todos os usuarios já cadastrados em uma nova página
+    #Exibindo os usuarios cadastrados
     usuarios = {
         'usuarios': Usuario.objects.all()
     }
 
-
-    #Retornando os dados para a página de listagem de usuarios.
+    #onde as informações vão ser exibidas
     return render(request,'usuarios/usuarios.html',usuarios)
