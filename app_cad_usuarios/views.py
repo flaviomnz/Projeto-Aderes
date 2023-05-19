@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Usuario
 from django.shortcuts import get_object_or_404
+from .forms import UsuarioForm
 
 # Create your views here.
 
@@ -34,21 +35,11 @@ def deletarUser(request, id):
 
 
 
-def editar(request, id):
-    usuarios = get_object_or_404(Usuario, id=id)
+def updateEdit(request, id):
+    usuarios = Usuario.objects.get(pk=id)
+    return render(request, 'usuarios/updateEdit.html')
+
     
-    if request.method == 'POST':
-        # atualizar os campos do objeto com base nos dados do formulário
-
-        editar_usuario = Usuario()
-        editar_usuario.name = request.POST['name']
-        editar_usuario.email = request.POST['email']
-
-        usuarios.save()  # Salve as alterações no banco de dados
-
-        # Redirecionamento
-        return render(request, 'usuarios/editar')
-
 
 
 

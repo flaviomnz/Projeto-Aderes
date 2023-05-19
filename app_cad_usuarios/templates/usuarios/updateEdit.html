@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="">
-    <title>Cadastro</title>
+    <link rel="stylesheet" href="/app_cad_usuarios/templates/usuarios/home.css">
+    <title>Editar Usuário</title>
 </head>
 
 <style>
@@ -22,7 +22,7 @@
     }
 
     form {
-        background-color: black;
+        background-color: rgb(255, 0, 0);
         color: white;
         padding: 20px;
         border-radius: 10px;
@@ -64,14 +64,14 @@
     }
 </style>
 <body>
-    <form action="{% url 'listagem_usuarios' %}" method="post">
+    <form action="" method="POST">
         {% csrf_token %}
-        <h1>Cadastro</h1>
-        <label for="nome">Nome:</label>
-        <input type="text" name="name">
+        <h1>EDITAR USUÁRIO</h1>
+        <label for="email">Nome:</label>
+        <input type="text" name="name" value="{{ usuario.name }}">
         <label for="email">E-mail:</label>
-        <input type="email" name="email">
-        <input type="submit" value="Cadastrar">
+        <input type="email" name="email" value="{{ usuario.email }}">
+        <input type="submit" value="SALVAR">
     </form>
 
 </body>
