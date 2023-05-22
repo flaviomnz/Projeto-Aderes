@@ -1,7 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Usuario
-from django.shortcuts import get_object_or_404
-from .forms import UsuarioForm
 
 # Create your views here.
 
@@ -9,8 +7,6 @@ def home(request):
     return render(request,'usuarios/home.html')
 
 def usuarios(request):
-    
-    #Salvando os dados da tela p/ o banco de dados
     novo_usuario = Usuario()
     novo_usuario.name = request.POST.get('name')
     novo_usuario.email = request.POST.get('email')
@@ -22,25 +18,32 @@ def usuarios(request):
     }
 
     #Onde as informações vão ser exibidas
-    return render(request,'usuarios/usuarios.html',usuarios)
+    return render(request,'usuarios/usuarios.html', usuarios)
 
 
-
-
-#Deletar usuário
+#DELETAR USUÁRIO
 def deletarUser(request, id):
     usuarios = Usuario.objects.get(id=id)
     usuarios.delete()
     return render(request, 'usuarios/home.html')
 
+#EDITAR    
+def edit(request, id):
+    usuarios = Usuario.objects.get(id=id)
+    return render(request, 'usuarios/edit.html', {"usuario": usuarios})
 
 
-def updateEdit(request, id):
-    usuarios = Usuario.objects.get(pk=id)
-    return render(request, 'usuarios/updateEdit.html')
+#ATUALIZAR CADASTRO
+def update(request, id):
+    name = request.POST.get("name")
+    email = request.POST.get("email")
+    usuarios = Usuario.objects.get(id=id)
+    usuarios.name = name
+    usuarios.email = email 
+    usuarios.save()
 
+    return render(request, 'usuarios/usuarios.html')
     
-
 
 
 

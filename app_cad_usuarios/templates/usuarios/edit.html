@@ -64,14 +64,17 @@
     }
 </style>
 <body>
-    <form action="" method="POST">
+    
+    {{ usuario.id }} - {{ usuario.name }}  - {{ usuario.email }}
+
+    <form action="{% url 'update' usuario.id %}" method="POST">
         {% csrf_token %}
         <h1>EDITAR USUÁRIO</h1>
         <label for="email">Nome:</label>
         <input type="text" name="name" value="{{ usuario.name }}">
         <label for="email">E-mail:</label>
         <input type="email" name="email" value="{{ usuario.email }}">
-        <input type="submit" value="SALVAR">
+        <input type="submit" value="update">
     </form>
 
 </body>

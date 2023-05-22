@@ -43,7 +43,6 @@
 	</style>
 </head>
 <body>
-	
 	<table>
 		<thead>
 			<tr>
@@ -62,7 +61,7 @@
         		<td>{{ usuario.email }}</td>
 				<td>
          		<a href="/deletarUser/{{ usuario.id }}"><button>DELETAR</button></a>
-				<a href="/updateEdit/{{ usuario.id }}"><button>EDITAR</button></a>
+				<a href="/edit/{{ usuario.id }}"><button>EDITAR</button></a>
 				</td>
 			</tr>
 			{% endfor %}
