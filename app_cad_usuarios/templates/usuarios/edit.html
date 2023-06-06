@@ -1,82 +1,35 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/app_cad_usuarios/templates/usuarios/home.css">
-    <title>Editar Usuário</title>
+    <title>Document</title>
 </head>
-
-<style>
-    * {
-        box-sizing: border-box;
-        font-family: Arial, sans-serif;
-    }
-
-    body {
-        background-color: white;
-        color: black;
-        margin: 0;
-    }
-
-    form {
-        background-color: rgb(255, 0, 0);
-        color: white;
-        padding: 20px;
-        border-radius: 10px;
-        max-width: 500px;
-        margin: 50px auto;
-    }
-
-    h1 {
-        text-align: center;
-        font-size: 36px;
-        margin-top: 0;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="password"] {
-        display: block;
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 20px;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-    }
-
-    input[type="submit"] {
-        background-color: white;
-        color: black;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-
-    input[type="submit"]:hover {
-        background-color: black;
-        color: white;
-    }
-</style>
 <body>
-    
     {{ usuario.id }} - {{ usuario.name }}  - {{ usuario.email }}
+    <form method="POST" action="{% url 'update' usuario.id %}">
+        <div>
+            <br>
+            <p>
+                <h3>Update Details</h3>
+            </p>
+        </div>
+        <div>
+            <p>Usuario:</p>
+            <div>
+                <input type="text" name="name" value="{{ usuario.name }}" />
+            </div>
+        </div>
+        <div>
+            <p>Email:</p>
+            <div>
+                <input type="email" name="email" value="{{ usuario.email }}" />
+            </div>
+        <div>
+            <br>
+            <button type="submit">Update</button>
 
-    <form action="{% url 'update' usuario.id %}" method="POST">
-        {% csrf_token %}
-        <h1>EDITAR USUÁRIO</h1>
-        <label for="email">Nome:</label>
-        <input type="text" name="name" value="{{ usuario.name }}">
-        <label for="email">E-mail:</label>
-        <input type="email" name="email" value="{{ usuario.email }}">
-        <input type="submit" value="update">
     </form>
-
 </body>
-
 </html>

@@ -1,9 +1,8 @@
 from django import forms
-from django.forms import ModelForm
+from django.forms import fields
 from .models import Usuario
 
-class UsuarioForm(ModelForm):
+class UsuarioForm(forms.ModelForm):
     class Meta:
-        model: Usuario
-        fields = ('name', 'email')
-        
+        model=Usuario
+        fields="__all__"
