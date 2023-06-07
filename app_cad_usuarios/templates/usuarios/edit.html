@@ -9,27 +9,21 @@
 <body>
     {{ usuario.id }} - {{ usuario.name }}  - {{ usuario.email }}
     <form method="POST" action="{% url 'update' usuario.id %}">
+        {% csrf_token %}
         <div>
             <br>
             <p>
-                <h3>Update Details</h3>
+                <h3> Editar Usuário: </h3>
             </p>
-        </div>
-        <div>
-            <p>Usuario:</p>
             <div>
-                <input type="text" name="name" value="{{ usuario.name }}" />
+                <p>Usuário Nome: </p> {{ usuario.name }}
             </div>
-        </div>
-        <div>
-            <p>Email:</p>
             <div>
-                <input type="email" name="email" value="{{ usuario.email }}" />
+                <p>Usuário Email: </p> {{ usuario.email }}
             </div>
-        <div>
-            <br>
-            <button type="submit">Update</button>
-
-    </form>
+            <div>
+                <br>
+                <button type="submit">SUBMIT</button>
+        </form>
 </body>
 </html>

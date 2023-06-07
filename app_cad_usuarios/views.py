@@ -3,7 +3,6 @@ from .models import Usuario
 from .forms import UsuarioForm
 
 
-
 # Formulário do usuário
 
 def user(request):
@@ -17,7 +16,7 @@ def user(request):
                 pass
     else:
         form = UsuarioForm()
-        return render(request, 'usuarios/index.html', {'form':form})
+        return render(request, 'usuarios/add.html', {'form':form})
     
 
 
@@ -35,14 +34,15 @@ def show(request):
 
 # Editar usuário
 
-def edit(request,id):
-    usuarios = Usuario.objects.get(id=id)
-    return render(request, 'usuarios/edit.html',{'usuarios': usuarios} )
+def edit(request, id):
+    usuario = Usuario.objects.get(id=id)
+    return render(request, 'usuarios/edit.html', {'usuarios': usuario})
 
 
 
 
 # Atualizar dados de um usuário
+
 def update(request, id):
     usuarios = Usuario.objects.get(id=id)
     form = UsuarioForm(request.POST, instance = usuarios)
