@@ -36,7 +36,7 @@ def show(request):
 
 def edit(request, id):
     usuario = Usuario.objects.get(id=id)
-    return render(request, 'usuarios/edit.html', {'usuarios': usuario})
+    return render(request, 'usuarios/edit.html', {'usuario': usuario})
 
 
 
