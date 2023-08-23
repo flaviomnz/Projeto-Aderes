@@ -14,3 +14,16 @@ class Usuario(models.Model):
     
 class Meta:
     db_table="usuario"
+
+#Role Permisions
+class EmpresaARole(AbstractUserRole):
+    available_permissions = {
+        'acessar_dashboard_empresa_a': True,
+        'visualizar_relatorios_empresa_a': True,
+    }
+
+class EmpresaBRole(AbstractUserRole):
+    available_permissions = {
+        'acessar_dashboard_empresa_b': True,
+        'visualizar_relatorios_empresa_b': True,
+    }
